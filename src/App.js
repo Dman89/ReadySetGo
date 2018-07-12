@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import UserList from './assets/userList';
 import UserModal from './assets/userModal';
 import MainPage from './assets/mainPage';
 import { columnButtons, users } from './demoData.js';
 
 class App extends Component {
 	componentWillMount() {
-		fetch('/user').then(function(res) {
-			console.log(res);
-		});
 		this.setState({
 			active: false,
 			users: users || [],
