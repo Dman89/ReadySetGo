@@ -1,14 +1,15 @@
 const express = require('express');
 const http = require('http');
 const bodyParser = require('body-parser');
-//const morgan = require('morgan');
+const morgan = require('morgan');
 const app = express();
 const router = require('./server/routes/router_user');
-//onst cors = require('cors');
-//app.use(morgan('combined'));
-//app.use(cors()); // Allows CORS(Cross Origin GET Request)
-app.use(bodyParser.json({ type: '*/*' }));
+const cors = require('cors');
+
+app.use(morgan('combined'));
+app.use(cors()); // Allows CORS(Cross Origin GET Request)
 app.use('/', express.static('build'));
+app.use(bodyParser.json({ type: '*/*' }));
 router(app);
 
 const port = process.env.PORT || 3000;

@@ -1,18 +1,16 @@
 const fs = require('fs');
 const path = require('path');
-const fileLocation = './users.json';
+const fileLocation = path.join('./server/routes/users.json');
 
 module.exports = function(app) {
-	app.get('/user', function(req, res) {
-		const users = readFile();
-		console.log(users);
-		return res.status(200).send({ users });
+	app.get('/users', function(req, res) {
+		const { users } = readFile();
+		res.status(200).send({ users });
 	});
-	app.post('/user', function(req, res) {
-		console.log(req);
+	app.post('/users', function(req, res) {
 		const users = req.users;
 		saveFile(users);
-		return res.status(200).send({ users });
+		return res.status(200);
 	});
 };
 
@@ -26,12 +24,6 @@ function saveToDB(json) {
 	});
 }
 
-function readFromDB() {
-	fs.readFile('users.json', function(err, data) {
-		return JSON.parse(data);
-	});
-}
-
 /* exported Function */
 function saveFile(json) {
 	const jsonString = JSON.stringify(json);
@@ -39,6 +31,7 @@ function saveFile(json) {
 }
 
 function readFile() {
-	const jsonData = readFromDB();
-	return jsonData;
+	const rawData = fs.readFileSync(fileLocation);
+	const users = JSON.parse(rawData);
+	return users;
 }

@@ -1,17 +1,28 @@
 const columnButtons = [
 	{
-		label: 'Name'
+		label: 'Name',
+		value: 'label'
 	},
 	{
-		label: 'Drink'
+		label: 'Drink',
+		value: 'drink'
 	},
 	{
-		label: 'Number'
+		label: 'Number',
+		value: 'phone'
 	},
 	{
-		label: 'Email'
+		label: 'Email',
+		value: 'email'
 	}
 ];
+
+const columnActionClasses = {
+	buttonCN: 'selector-button selector-button--adaptive',
+	iconCN: 'selector-indicator',
+	containerCN: 'selector-container',
+	labelCN: 'selector-label'
+};
 
 const users = [
 	{
@@ -81,6 +92,17 @@ const users = [
 	}
 ];
 
+const userListClasses = {
+	listGroupCN: '',
+	anchorCN: 'list-group-item--adaptive',
+	mediaGroupCN: 'name-column',
+	imageCN: 'small circle',
+	columnOneCN: 'bold',
+	columnTwoCN: '',
+	columnThreeCN: '',
+	columnFourCN: ''
+};
+
 const tabSet = [
 	{
 		label: 'Location'
@@ -93,4 +115,4 @@ const tabSet = [
 	}
 ];
 
-export { columnButtons, users, tabSet };
+export { columnButtons, users, tabSet, columnActionClasses, userListClasses };
